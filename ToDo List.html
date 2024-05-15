@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>ToDo List</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <style>
+          *{
+               margin: 0px;
+               padding: 0px;
+               box-sizing: border-box;
+          }
+           .container
+           {
+               width: 100%;
+               min-height: 100vh;
+               display: flex;
+               background: linear-gradient(135deg, #153677, #4e085f);
+           }
+           #d1
+           {
+               width: 100%;
+               max-width: 800px;
+               background: white;
+               border-radius: 10px;
+               margin: auto;
+               margin-top: 50px;
+               text-align: center;
+           }
+           #d1 h2
+          {
+               color: red;
+               text-align: center;
+               margin-bottom: 20px;
+               margin-top: 10px;
+               font-size: 40px;
+           }
+           input
+           {
+               flex: 1;
+               border: none;
+               outline: none;
+               padding: 10px;
+               font-size: 30px;
+               height: 60px;
+               width: 70%;
+               margin-bottom: 5px;
+               background-color: antiquewhite;
+               border-radius: 20px;
+               font-weight: 14px;
+           }
+           #button
+           {
+               border: none;
+               outline: none;
+               width: 20%;
+               height:60px;
+               padding: 10px;
+               margin-bottom: 5px;
+               background: green;
+               color: white;
+               font-size: 16px;
+               cursor: pointer;
+               border-radius: 40px;
+
+           }
+           ul li
+           {
+               list-style: none;
+               font-size: 30px;
+               text-align: left;
+               border-radius: 20px;
+               margin-bottom: 5px;
+               background: linear-gradient(135deg, green,blue);
+           }
+           #btn
+           {
+              margin-left: 450px;
+              cursor: pointer;
+           }
+     </style>
+</head>
+<body>
+     <div class="container">
+          <div id="d1">
+               <h2>Todo List</h2>
+                    <input type="text" id="input" placeholder="Add Your Task">
+                    <button onclick="fun()" id="button">Add Task</button>
+          </div>
+     </div>
+</body>
+<script>
+     const displaydata=document.getElementById('input');
+     const ul=document.createElement('ul');
+     const div=document.getElementById("d1");
+     div.appendChild(ul)
+     function fun()
+     {
+          if(displaydata.value === "")
+          {
+               alert("Please Enter a Task")
+          }
+          else{
+               let li = document.createElement('li'); 
+               li.innerHTML = displaydata.value;
+               ul.appendChild(li);
+               let btn=document.createElement("button");
+               btn.className = "fa fa-trash"
+               btn.id = "btn"
+               li.appendChild(btn);
+     }
+     displaydata.value = "";
+}
+ul.addEventListener("click", function(event)
+{
+     event.target.tagName === "button";
+     event.target.parentElement.remove();
+}
+)
+</script>
+</html>
