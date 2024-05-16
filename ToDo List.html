@@ -4,8 +4,7 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>ToDo List</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
      <style>
           *{
                margin: 0px;
@@ -72,13 +71,28 @@
                font-size: 30px;
                text-align: left;
                border-radius: 20px;
+               padding-left: 10px;
+               display: flex;
                margin-bottom: 5px;
                background: linear-gradient(136deg, green,blue);
            }
            #btn
            {
-              margin-left: 450px;
+              margin-left: 730px;
+              width: 40px;
+              height: 34px;
+              font-size: 25px;
               cursor: pointer;
+              position: absolute;
+           }
+           #btn2
+           {
+              margin-left: 680px;
+              width: 40px;
+              height: 34px;
+              font-size: 25px;
+              cursor: pointer;
+              position: absolute;  
            }
      </style>
 </head>
@@ -95,6 +109,10 @@
      const displaydata=document.getElementById('input');
      const ul=document.createElement('ul');
      const div=document.getElementById("d1");
+     const b=document.getElementsByTagName("button")
+     const but=document.createElement("button");
+     but.id="button";
+     but.textContent="Edit Task";
      div.appendChild(ul)
      function fun()
      {
@@ -107,17 +125,29 @@
                li.innerHTML = displaydata.value;
                ul.appendChild(li);
                let btn=document.createElement("button");
-               btn.className = "fa fa-trash"
-               btn.id = "btn"
+               btn.className = "fa fa-trash";
+               btn.id = "btn";
                li.appendChild(btn);
+               let edit=document.createElement("button");
+               edit.className = "fa-solid fa-pen-to-square";
+               edit.id = "btn2";
+               li.appendChild(edit);
      }
      displaydata.value = "";
 }
 ul.addEventListener("click", function(event)
 {
-     event.target.tagName === "button";
+     if(event.target.id === "btn")
+     {
      event.target.parentElement.remove();
+     }
+     else if(event.target.id === "btn2")
+     {
+      displaydata.value = event.target.parentElement.textContent;
+      event.target.parentElement.remove(); 
+      document.getElementById("button").innerHTML=but.textContent;
+     }
 }
-)
+)     
 </script>
 </html>
