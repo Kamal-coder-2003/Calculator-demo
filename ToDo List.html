@@ -125,17 +125,19 @@
      const h=document.createElement("h2");
      h.innerHTML="NOT COMPLETED";
      h.style.color="red"
+     h.style.backgroundColor="aliceblue"
      ul.appendChild(h);
-     const ol=document.createElement("ol");
+     const ul2=document.createElement("ul");
      const h2=document.createElement("h2");
      h2.innerHTML="COMPLETED";
      h2.style.color="green";
-     ol.appendChild(h2);
+     h2.style.backgroundColor="aliceblue"
+     ul2.appendChild(h2);
      const div=document.getElementById("d1");
      const b=document.getElementsByTagName("button")
      const but=document.createElement("button");
      div.appendChild(ul);
-     div.appendChild(ol);
+     div.appendChild(ul2);
      function fun()
      {
           if(displaydata.value === "")
@@ -160,38 +162,64 @@
                li.appendChild(done);
      }
      displaydata.value = "";
+     savedata();
+     savedata2();
+     console.log(savedata);
 }
 ul.addEventListener("click", function(event)
 {
      if(event.target.id === "btn")
      {
      event.target.parentElement.remove();
+     savedata();
      }
      else if(event.target.id === "btn2")
      {
       displaydata.value = event.target.parentElement.textContent;
       event.target.parentElement.remove(); 
+      savedata();
      }
      else if(event.target.id === "btn3")
      {
           li=event.target.parentElement;
-          ol.appendChild(li);
-
+          ul2.appendChild(li);
+          savedata();
+          savedata2();
      }
 }
 ) 
-ol.addEventListener("click", function(event)
+ul2.addEventListener("click", function(event)
 {
      if(event.target.id === "btn")
      {
      event.target.parentElement.remove();
+     savedata2();
      }
      else if(event.target.id === "btn2")
      {
       displaydata.value = event.target.parentElement.textContent;
-      event.target.parentElement.remove(); 
+      event.target.parentElement.remove();
+      savedata2(); 
      }
 }
 )    
+function savedata()
+{
+     localStorage.setItem("task",ul.innerHTML);
+}
+function savedata2()
+{
+     localStorage.setItem("task1",ul2.innerHTML);
+}
+function showdata2()
+{
+     ul2.innerHTML=localStorage.getItem("task1");
+}
+function showdata()
+{
+     ul.innerHTML=localStorage.getItem("task");
+}
+showdata();
+showdata2();
 </script>
 </html>
